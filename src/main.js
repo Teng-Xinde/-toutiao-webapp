@@ -7,6 +7,9 @@ import Vant from 'vant'
 import 'vant/lib/index.css'
 import './styles/index.less'
 import 'amfe-flexible'  
+	// 加载 dayjs 初始化配置
+  import './utils/dayjs'
+
 Vue.use(Vant)
 Vue.config.productionTip = false
 
