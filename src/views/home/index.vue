@@ -65,7 +65,7 @@ import { getUserChannels } from "@/api/user";
 import ArticleList from "./components/article-list";
 import ChannelEdit from "./components/channel-edit";
 import { mapState } from "vuex";
-import { getItem } from "@/utils/storage";
+import { getItem,setItem } from "@/utils/storage";
 
 export default {
   name: "HomeIndex",
@@ -97,9 +97,18 @@ export default {
         let channels = [];
 
         if (this.user) {
+           const localChannels = getItem("User_TOUTIAO_CHANNELS");
+             if (localChannels) {
+                 channels = localChannels;
+          } else {
+            //    没有，请求获取默认频道列表
+            const { data } = await getUserChannels();
+            channels = data.data.channels;
+            setItem("User_TOUTIAO_CHANNELS",channels)
+          }
           // 已登录，请求获取用户频道列表
-          const { data } = await getUserChannels();
-          channels = data.data.channels;
+          // const { data } = await getUserChannels();
+          // channels = data.data.channels;
         } else {
           // 未登录，判断是否有本地的频道列表数据
           const localChannels = getItem("TOUTIAO_CHANNELS");
@@ -110,6 +119,7 @@ export default {
             //    没有，请求获取默认频道列表
             const { data } = await getUserChannels();
             channels = data.data.channels;
+            setItem("TOUTIAO_CHANNELS",channels)
           }
         }
 

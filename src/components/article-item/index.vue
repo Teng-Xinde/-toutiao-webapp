@@ -10,7 +10,7 @@
           v-for="(img, index) in article.cover.images"
           :key="index"
         >
-          <van-image class="cover-item-img" fit="cover" :src="img" />
+          <van-image  lazy-load class="cover-item-img" fit="cover" :src="img" />
         </div>
       </div>
       <div class="label-info-wrap">
