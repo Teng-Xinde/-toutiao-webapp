@@ -35,10 +35,23 @@
       <div
         slot="nav-right"
         class="hamburger-btn"
-        @click="isChennelEditShow = true"
+        @click="isChennelEditShow = true,position='bottom'"
       >
         <i class="toutiao toutiao-gengduo"></i>
       </div>
+      <!-- <div slot="nav-left">
+      <van-icon name="arrow" />
+
+      </div> -->
+    <template #nav-left> 
+      <van-icon name="arrow"  @click="isChennelEditShow = true,position='left'"/>
+    <van-icon name="arrow-left" @click="isChennelEditShow = true,position='right'" />
+    <van-icon name="arrow-up" @click="isChennelEditShow = true,position='bottom'"/>
+    <van-icon name="arrow-down" @click="isChennelEditShow = true,position='top'"/>
+   </template>
+    
+ 
+ 
     </van-tabs>
     <!-- /频道列表 -->
 
@@ -47,7 +60,7 @@
       v-model="isChennelEditShow"
       closeable
       close-icon-position="top-left"
-      position="bottom"
+      :position="position"
       :style="{ height: '100%' }"
     >
       <channel-edit
@@ -77,6 +90,7 @@ export default {
   data() {
     return {
       active: 0,
+      position:'',
       channels: [], // 频道列表
       isChennelEditShow: false, // 控制编辑频道弹出层的显示状态
     };
