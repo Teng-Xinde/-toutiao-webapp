@@ -145,6 +145,8 @@ export default {
             id: channel.id, // 频道ID
             seq: this.myChannels.length, // 序号
           });
+        setItem("USER_TOUTIAO_CHANNELS", this.myChannels);
+
         } catch (err) {
           this.$toast("保存失败，请稍后重试");
         }

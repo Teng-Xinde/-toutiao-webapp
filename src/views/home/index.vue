@@ -1,7 +1,8 @@
 <template>
   <div class="home-container">
     <!-- 导航栏 -->
-    <van-nav-bar class="page-nav-bar" fixed>
+   
+     <van-nav-bar class="page-nav-bar" fixed>
       <van-button
         class="search-btn"
         slot="title"
@@ -10,9 +11,8 @@
         round
         icon="search"
         to="/search"
-        >搜索</van-button
-      >
-    </van-nav-bar>
+      >搜索</van-button>
+      </van-nav-bar>
     <!-- /导航栏 -->
 
     <!-- 频道列表 -->
